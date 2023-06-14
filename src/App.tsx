@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Accordion from "./components/Accordion/Accordion";
+import Rating, {RatingValueType} from "./components/Rating/Rating";
+import UncontrolledONOFF from "./components/ONOFF/UncontrolledONOFF";
+import UncotrolledAccordion from "./components/UncontrolledAccordion/UncotrolledAccordion";
+import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
+import OnOff from "./components/ONOFF/OnOff";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [ratingValue, setRatingValue] = useState<RatingValueType>(0);
+    const [collapsed, setCollapsed] = useState<boolean>(false);
+    const [lightStatus, setLightStatus] = useState<boolean>(false);
+    return (
+        <div className="App">
+            <Accordion title={"Accordion title"} collapsed={collapsed} onClick={setCollapsed}/>
+            <UncotrolledAccordion title={"UncontrolledAccordion"}/>
+            <Rating ratingValue={ratingValue} onClick={setRatingValue}/>
+            <UncontrolledRating/>
+            <OnOff lightStatus={lightStatus} setLightStatus={setLightStatus}/>PRevious Controlled
+            <UncontrolledONOFF/> {lightStatus.toString()}
+
+        </div>
+    );
 }
 
 export default App;

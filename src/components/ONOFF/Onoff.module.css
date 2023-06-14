@@ -1,0 +1,31 @@
+.lamp {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.lampActive {
+    background-color: seagreen;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 100%;
+}
+
+.lampInactive {
+    background-color: palevioletred;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 100%;
+}
+
+.switcher {
+}
+
+.switcherActive {
+    background-color: seagreen;
+}
+
+.switcherInactive{
+    background-color: palevioletred;
+}
