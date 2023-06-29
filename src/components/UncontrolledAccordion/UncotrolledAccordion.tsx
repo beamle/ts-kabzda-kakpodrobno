@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import AccordionTitle from "./AccordionTitle/AccordionTitle";
 
 type AccordionProps = {
     title: string
@@ -8,23 +9,13 @@ const UncotrolledAccordion = (props: AccordionProps) => {
     const [collapsed, setCollapsed] = useState(true);
     return (
         <div>
-            <AccordionTitle title={props.title} onClick={() => setCollapsed(!collapsed)}/>
-            <AccordionBody collapsed={collapsed} setCollapse={setCollapsed}/>
+            {/*<AccordionTitle title={props.title} onClick={() => setCollapsed(!collapsed)}/>*/}
+            {/*<AccordionBody collapsed={collapsed} setCollapse={setCollapsed}/>*/}
         </div>
     );
 };
 
 
-type AccordionTitlePropsType = {
-    title: string
-    onClick: () => void
-}
-
-function AccordionTitle(props: AccordionTitlePropsType) {
-    return (
-        <h3 onClick={props.onClick}>-----{props.title}-----</h3>
-    )
-}
 
 type AccordionBodyPropsType = {
     collapsed: boolean

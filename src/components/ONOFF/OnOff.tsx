@@ -17,8 +17,7 @@ const OnOff = ({lightStatus, setLightStatus}: OnOffType) => {
     return (
         <div className={s.switcher}>
             <button onClick={changeStatusOn} className={lightStatus ? s.switcherActive : ''}>On</button>
-            <button onClick={changeStatusOff} className={!lightStatus ? s.switcherInactive : ''}>Off
-            </button>
+            <button onClick={changeStatusOff} className={!lightStatus ? s.switcherInactive : ''}>Off</button>
             <span className={lightStatus ? s.lampActive : s.lampInactive}>...</span>
         </div>
     );

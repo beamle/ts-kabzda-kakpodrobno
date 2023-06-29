@@ -1,0 +1,29 @@
+.selectorWrapper {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+.selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*background-color: red;*/
+
+}
+
+.selectorOptionWrapper {
+    margin: 1px;
+    border: 1px solid black;
+    /*box-shadow: 10px 0px 24px -15px rgba(0,0,0,0.64);*/
+}
+
+.selectorOption {
+    /*background-color: grey;*/
+    padding: 10px;
+}
+
