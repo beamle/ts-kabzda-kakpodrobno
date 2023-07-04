@@ -11,19 +11,31 @@
 .selector {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 5px;
+    border: 1px solid black;
     /*background-color: red;*/
+}
 
+.selector h3 {
+    margin: 10px 10px 10px 5px;
 }
 
 .selectorOptionWrapper {
-    margin: 1px;
-    border: 1px solid black;
+    width: 100%;
     /*box-shadow: 10px 0px 24px -15px rgba(0,0,0,0.64);*/
 }
 
 .selectorOption {
+    padding: 5px;
     /*background-color: grey;*/
-    padding: 10px;
+    align-self: flex-start;
 }
 
+.selected {
+    background-color: #1ea7fd;
+}
+
+.hovered {
+    background-color: #1ea7fd;
+}

@@ -7,14 +7,15 @@ type ItemsType = {
 }
 
 type ControlledSelectProps = {
-    value: any
+    value?: any
     onChange: (value: any) => any
     items: ItemsType[]
 }
 
 const ControlledSelect = (props: ControlledSelectProps) => {
-    const [collapsed, setCollapsed] = useState(true);
-    const [selectedItem, setSelectedItem] = useState('selected')
+    const [collapsed, setCollapsed] = useState(false);
+    const [selectedItem, setSelectedItem] = useState('Select city')
+    const [hovered, setHovered] = useState('')
 
     function changeCollapsedStatus() {
         setCollapsed(!collapsed)
@@ -28,9 +29,11 @@ const ControlledSelect = (props: ControlledSelectProps) => {
             }
 
             return (
-
                 <div className={s.selectorOptionWrapper}>
-                    <div className={s.selectorOption} onClick={onClickHandler}
+                    <div className={s.selectorOption + ' ' + (item.title === hovered ? s.hovered : '')}
+                         onClick={onClickHandler}
+                         onMouseEnter={() => setHovered(item.title)}
+                         onKeyDown={() => setHovered(item.title)}
                          key={item.value}>{item.title} {item.value}</div>
                 </div>
             )
@@ -39,7 +42,8 @@ const ControlledSelect = (props: ControlledSelectProps) => {
 
     return (
         <div className={s.selectorWrapper}>
-            <div className={s.selector} onClick={changeCollapsedStatus}>{selectedItem}
+            <div className={s.selector} onClick={changeCollapsedStatus}>
+                <h3>{selectedItem} {collapsed ? '⌃' : '⌄'}</h3>
                 {collapsed && showCollapsedItems()}
             </div>
         </div>
