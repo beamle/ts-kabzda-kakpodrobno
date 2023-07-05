@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useState, KeyboardEvent, useEffect} from 'react';
 import s from "./ControlledSelect.module.css";
 
 type ItemsType = {
@@ -15,25 +15,68 @@ type ControlledSelectProps = {
 const ControlledSelect = (props: ControlledSelectProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const [selectedItem, setSelectedItem] = useState('Select city')
-    const [hovered, setHovered] = useState('')
+    const [hovered, setHovered] = useState('Riga')
 
     function changeCollapsedStatus() {
         setCollapsed(!collapsed)
     }
 
-    function showCollapsedItems() {
-        return props.items.map(item => {
-            const onClickHandler = () => {
-                setSelectedItem(item.title);
-                setCollapsed(false)
+    const onClickHandler = (title: string) => {
+        setSelectedItem(title);
+        setCollapsed(false)
+    }
+
+    useEffect(() => {
+        // setHovered(props.items)
+    }, [])
+
+    function onKeyUp(e: KeyboardEvent<HTMLDivElement>) {
+        console.log('press')
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+            for (let i = 0; i < props.items.length; i++) {
+                if (props.items[i].title === hovered) {
+                    const nextElementSelection = e.key === "ArrowDown" ? props.items[i + 1] : props.items[i - 1]
+                    console.log("hovered: ", hovered, "title", props.items[i].title, "inside of function")
+                    if (nextElementSelection) {
+                        setSelectedItem(nextElementSelection.title);
+                        setHovered(nextElementSelection.title);
+                        break
+                    }
+                }
             }
+        }
+    }
+
+    // function onKeyUp(e: KeyboardEvent<HTMLDivElement>) {
+    //     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    //         for (let i = 0; i < props.items.length; i++) {
+    //             if (props.items[i].title === hovered) {
+    //                 const nextIndex = e.key === 'ArrowDown' ? i + 1 : i - 1;
+    //                 if (nextIndex >= 0 && nextIndex < props.items.length) {
+    //                     setSelectedItem(props.items[nextIndex].title);
+    //                     setHovered(props.items[nextIndex].title);
+    //                 }
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    console.log(hovered, 'hovered outside of function')
+
+    function showCollapsedItems() {
+
+        // const [tab,setTab] = useState(item.value)
+        return props.items.map(item => {
 
             return (
-                <div className={s.selectorOptionWrapper}>
+                <div autoFocus={true} className={s.selectorOptionWrapper}>
                     <div className={s.selectorOption + ' ' + (item.title === hovered ? s.hovered : '')}
-                         onClick={onClickHandler}
-                         onMouseEnter={() => setHovered(item.title)}
-                         onKeyDown={() => setHovered(item.title)}
+                         onClick={() => onClickHandler(item.title)}
+                         onMouseEnter={(event) => {setHovered(item.title); console.log(event.currentTarget.tabIndex)}}
+                         tabIndex={0}
+                         onKeyUp={onKeyUp}
                          key={item.value}>{item.title} {item.value}</div>
                 </div>
             )
@@ -43,7 +86,9 @@ const ControlledSelect = (props: ControlledSelectProps) => {
     return (
         <div className={s.selectorWrapper}>
             <div className={s.selector} onClick={changeCollapsedStatus}>
-                <h3>{selectedItem} {collapsed ? '⌃' : '⌄'}</h3>
+                <div className={s.selectorTitle}>
+                    {selectedItem} {collapsed ? '▲' : '▼'}
+                </div>
                 {collapsed && showCollapsedItems()}
             </div>
         </div>

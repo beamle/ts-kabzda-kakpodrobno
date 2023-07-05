@@ -15,10 +15,25 @@
     padding: 5px;
     border: 1px solid black;
     /*background-color: red;*/
+    cursor:pointer;
+    width: 130px;
+
+}
+
+.selector:active {
+    background-color: #e0dddd;
 }
 
 .selector h3 {
     margin: 10px 10px 10px 5px;
+}
+
+.selectorTitle {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 10px 0 10px 0;
 }
 
 .selectorOptionWrapper {

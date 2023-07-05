@@ -11,7 +11,7 @@ export default meta;
 type Story = StoryObj<typeof ControlledSelect>;
 
 const ShowControlledSelect = () => {
-    return <ControlledSelect value={'2'} onChange={action('Value changed')}
+    return <ControlledSelect value={'1'} onChange={action('Value changed')}
                              items={[
                                  {value: '1', title: 'Tallinn'},
                                  {value: '2', title: 'Helsinki'},
