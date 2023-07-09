@@ -15,7 +15,7 @@ function App() {
         <div className="App">
             <Accordion title={"Accordion title"} collapsed={collapsed} onClick={setCollapsed}
                        items={[{title: 'Banan', value: 1},{title: 'Orange', value: 2}, {title: 'Strawberries', value: 33}]} onClickSelect={()=>{}}/>
-            {/*<UncotrolledAccordion title={"UncontrolledAccordion"}/>*/}
+            <UncotrolledAccordion title={"UncontrolledAccordion"}/>
             {/*<Rating ratingValue={ratingValue} onClick={setRatingValue}/>*/}
             {/*<UncontrolledRating/>*/}
             {/*<OnOff lightStatus={lightStatus} setLightStatus={setLightStatus}/>PRevious Controlled*/}

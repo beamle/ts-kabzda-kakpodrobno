@@ -1,8 +1,8 @@
 import {Meta, StoryObj} from "@storybook/react";
-import {useState} from "react";
-import ControlledSelect from "./ControlledSelect";
+import ControlledSelect from "./ControlledSelectDm";
+import ControlledSelectDm from "./ControlledSelectDm";
 import {action} from "@storybook/addon-actions";
-
+import {useState} from "react";
 const meta: Meta<typeof ControlledSelect> = {
     component: ControlledSelect,
 };
@@ -11,19 +11,22 @@ export default meta;
 type Story = StoryObj<typeof ControlledSelect>;
 
 const ShowControlledSelect = () => {
-    return <ControlledSelect selectedItem={'1'} setSelectedItem={action('Value changed')}
+    const [selectedItemValue, setSelectedItemValue] = useState('1')
+    return <ControlledSelectDm selectedItemValue={selectedItemValue} setSelectedItemValue={setSelectedItemValue}
                              items={[
                                  {value: '1', title: 'Tallinn'},
                                  {value: '2', title: 'Helsinki'},
-                                 {value: '3', title: 'Warsaw'}]}></ControlledSelect>
+                                 {value: '3', title: 'Warsaw'}]}></ControlledSelectDm>
 }
 
 const ShowControlledSelectWithoutValue = () => {
-    return <ControlledSelect setSelectedItem={action('Value changed')}
+    const [selectedItemValue, setSelectedItemValue] = useState(null)
+    return <ControlledSelectDm setSelectedItemValue={setSelectedItemValue}
+                               selectedItemValue={selectedItemValue}
                              items={[
                                  {value: '1', title: 'Tallinn'},
                                  {value: '2', title: 'Helsinki'},
-                                 {value: '3', title: 'Warsaw'}]}></ControlledSelect>
+                                 {value: '3', title: 'Warsaw'}]}></ControlledSelectDm>
 }
 
 

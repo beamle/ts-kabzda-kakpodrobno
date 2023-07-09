@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ControlledSelect from "../ControlledSelect/ControlledSelect";
+import ControlledSelectDm from "../ControlledSelectDm/ControlledSelectDm";
 
 type ItemType = {
     title: string
@@ -17,11 +18,14 @@ export type AccordionProps = {
 }
 
 const Accordion = (props: AccordionProps) => {
+    const [selectedItem, setSelectedItem] = useState('Select')
+
     return (
         <div>
             <AccordionTitle title={props.title} onClick={() => props.onClick(!props.collapsed)}/>
             <AccordionBody collapsed={props.collapsed} items={props.items} onClickSelect={props.onClickSelect}/>
-            <ControlledSelect  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} onChange={() => {}} value={''}/>
+            <ControlledSelect  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+            {/*<ControlledSelectDm  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} setVelectedItemValue={setSelectedItemValue} selectedItemValue={'2'}/>*/}
         </div>
     );
 };
@@ -49,7 +53,6 @@ type AccordionBodyPropsType = {
 }
 
 export function AccordionBody({collapsed, items, onClickSelect}: AccordionBodyPropsType) {
-    console.log(items, 'items')
     return (
         <ul>
             {!collapsed && items.map((el, idx) => <li key={idx} onClick={() => {onClickSelect(el.value)}}>{el.title}</li>)}
@@ -57,4 +60,4 @@ export function AccordionBody({collapsed, items, onClickSelect}: AccordionBodyPr
     )
 }
 
-export default Accordion;
+export default React.memo(Accordion);
