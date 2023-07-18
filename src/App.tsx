@@ -6,6 +6,7 @@ import UncontrolledONOFF from "./components/ONOFF/UncontrolledONOFF";
 import UncotrolledAccordion from "./components/UncontrolledAccordion/UncotrolledAccordion";
 import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
 import OnOff from "./components/ONOFF/OnOff";
+import UseMemo from "./components/useMemo/UseMemo";
 
 function App() {
     const [ratingValue, setRatingValue] = useState<RatingValueType>(0);

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ControlledSelect from "../ControlledSelect/ControlledSelect";
 import ControlledSelectDm from "../ControlledSelectDm/ControlledSelectDm";
+import UseMemo from "../useMemo/UseMemo";
 
 type ItemType = {
     title: string
@@ -24,7 +25,10 @@ const Accordion = (props: AccordionProps) => {
         <div>
             <AccordionTitle title={props.title} onClick={() => props.onClick(!props.collapsed)}/>
             <AccordionBody collapsed={props.collapsed} items={props.items} onClickSelect={props.onClickSelect}/>
-            <ControlledSelect  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+            <ControlledSelect  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]}
+                               setSelectedItem={setSelectedItem}
+                               selectedItem={selectedItem}/>
+            <UseMemo setSelectedItemValue={setSelectedItem} items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]}/>
             {/*<ControlledSelectDm  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} setVelectedItemValue={setSelectedItemValue} selectedItemValue={'2'}/>*/}
         </div>
     );

@@ -16,9 +16,6 @@ const ControlledSelect = (props: ControlledSelectProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const [hovered, setHovered] = useState('Riga')
 
-    // const itemSelected = props.items.find(item => item.value === props.selectedItem);
-    // const hoveredItem = props.items.find(i => i.value === hovered)
-
     function changeCollapsedStatus() {
         setCollapsed(!collapsed)
     }
@@ -27,10 +24,6 @@ const ControlledSelect = (props: ControlledSelectProps) => {
         props.setSelectedItem(title);
         setCollapsed(false)
     }
-
-    // useEffect(() => {
-    //     setHovered(props.selectedItem)
-    // }, [props.selectedItem])
 
     function onKeyUp(e: KeyboardEvent<HTMLDivElement>) {
         console.log('press')
@@ -51,21 +44,6 @@ const ControlledSelect = (props: ControlledSelectProps) => {
             setCollapsed(false)
         }
     }
-
-    // function onKeyUp(e: KeyboardEvent<HTMLDivElement>) {
-    //     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-    //         for (let i = 0; i < props.items.length; i++) {
-    //             if (props.items[i].value === hovered) {
-    //                 const nextIndex = e.key === 'ArrowDown' ? i + 1 : i - 1;
-    //                 if (nextIndex >= 0 && nextIndex < props.items.length) {
-    //                     setSelectedItem(props.items[nextIndex].value);
-    //                     setHovered(props.items[nextIndex].value);
-    //                 }
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
 
 
     console.log(hovered, 'hovered outside of function')
