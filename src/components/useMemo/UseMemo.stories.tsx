@@ -1,6 +1,6 @@
 import {Meta, StoryObj} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import UseMemoMemorized from "./UseMemo";
 
 const meta: Meta<typeof UseMemoMemorized> = {
@@ -32,7 +32,7 @@ const ShowControlledSelect = () => {
     ])
 
     let filter1 = useMemo(() => {
-        return arr.filter(el => el.country === 'Estonia')
+        return arr.filter(el => el.country === 'Estonia') // 001
     }, [arr])
 
     let filter2 =  useMemo(() => {
@@ -45,6 +45,10 @@ const ShowControlledSelect = () => {
     const setSelected = useCallback(() => {
         return setSelectedItemValue
     }, [])
+    const arrRef = useRef(arr);
+    useEffect(() => {
+        console.log(arrRef.current === arr)
+    })
 
 
     return (<>

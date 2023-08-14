@@ -28,7 +28,7 @@ const Accordion = (props: AccordionProps) => {
             <ControlledSelect  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]}
                                setSelectedItem={setSelectedItem}
                                selectedItem={selectedItem}/>
-            <UseMemo setSelectedItemValue={setSelectedItem} items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]}/>
+            <UseMemo setSelectedItemValue={setSelectedItem} items={[{country: 'Estonia', title: 'Tallinn', value: 1}]}/>
             {/*<ControlledSelectDm  items={[{title: 'Tallinn', value: 1},{title: 'Riga', value: 2}, {title: 'Vilniusss', value: 3}]} setVelectedItemValue={setSelectedItemValue} selectedItemValue={'2'}/>*/}
         </div>
     );
